@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Middleware\CheckHour;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/goodnight', function () {
-    return "Jó éjszakát!";
-})->middleware(['check-hour:20']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
